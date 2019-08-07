@@ -17,13 +17,13 @@ function SignUpForm ({errors, touched, values, handleSubmit, status}) {
     }, [ status ]);
 
     return (
-        <>
+        <div>
         <Form>
-            <h1>Create your account</h1>
+            <h1>Create your villainous account</h1>
             
             <div className="name-wrapper">
                 <div className="option">
-                    <label htmlFor="firstname">First name</label>
+                    <label htmlFor="firstname">Fiendish first name</label>
                         <Field
                             type="text"
                             name="firstname"
@@ -33,7 +33,7 @@ function SignUpForm ({errors, touched, values, handleSubmit, status}) {
                 </div>
                 
                 <div className="option">
-                    <label htmlFor="lastname">Last name</label>
+                    <label htmlFor="lastname">Nefarious last name</label>
                     <Field
                         type="text"
                         name="lastname"
@@ -43,8 +43,23 @@ function SignUpForm ({errors, touched, values, handleSubmit, status}) {
                 </div>  
             </div>
             
+            <label htmlFor="title" className="title">Evil Title</label>
+            <Field
+                component="select"
+                name="title"
+                placeholder=""
+                id="title" >
+                <option>the Sad and Title-less</option>
+                <option>the Depraved</option>
+                <option>the Terrible</option>
+                <option>the Malevolent</option>
+                <option>the Vile</option>
+                <option>the Cruel</option>
+            </Field>    
+            {touched.title && errors.email && <p className="error-text">{errors.title}</p>}
             
-            <label htmlFor="email">Email address</label>
+            <br/>
+            <label htmlFor="email">Where should we send comments, questions, threats and/or pledges of fealty?</label>
             <Field
                 type="email"
                 name="email"
@@ -75,7 +90,7 @@ function SignUpForm ({errors, touched, values, handleSubmit, status}) {
                 
             </div>
             
-            <p>Terms of Service</p>
+            <p>Terms of Unholy Service</p>
             <section className="TOS">
             
                 {TOS}
@@ -87,15 +102,15 @@ function SignUpForm ({errors, touched, values, handleSubmit, status}) {
                     name="TOS"
                     checked={values.TOS}
                     id="TOS" />
-                    <label htmlFor="TOS">By selecting this, you are confirming that you have read the Terms of Service</label>
+                    <label htmlFor="TOS">By selecting this, you are confirming that you have read the Terms of Unholy Service</label>
                 {touched.TOS && errors.TOS && <p className="error-text">{errors.TOS}</p>}
             </div>
             
             
-            <button type="submit">Create account</button>
+            <button type="submit">Create villainous account</button>
         </Form>
         <UserList userList={userList} />
-        </>
+        </div>
     )
 }
 
@@ -114,10 +129,11 @@ const FormikSignUpForm = withFormik({
     validationSchema: Yup.object().shape({
         firstname: Yup.string().required("You must enter a first name.").label(),
         lastname: Yup.string().required("You must enter a first name."),
+        title: Yup.string().required("Select a title, foul fiend!"),
         email: Yup.string().email("Not a valid email address.").required("You must enter a valid email address."),
         password: Yup.string().min(8, "Password must be at least 8 characters.").required("You must enter a password."),
         confirmPassword: Yup.string().oneOf([Yup.ref('password'), null], "Passwords do not match.").required("You must confirm your password."),
-        TOS: Yup.bool().oneOf([true],"You must accept the terms and conditions to continue.").required("You must accept the terms and conditions to continue.")
+        TOS: Yup.bool().oneOf([true],"You must accept the terms and conditions to continue.")
     }),
 
     handleSubmit(values, { setStatus, resetForm }) {
