@@ -1,33 +1,65 @@
-.App {
-  text-align: center;
+.app {
+  display: flex;
+  align-items: baseline;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+form {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 500px;
+  /* height: 800px; */
+  align-items: space-around;
+  margin: 2rem;
+  border: 1px solid rgb(175, 175, 175);
+  box-shadow: 2px 2px 3px lightgrey;
+  border-radius: .23rem;
+  padding: 2rem;
 }
 
-.App-link {
-  color: #61dafb;
+input {
+  margin: .5rem 0 .25rem 0;
+  padding: .5rem;
+  border-radius: .23rem;
+  border: 1px solid rgb(175, 175, 175)
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.name-wrapper, .password-wrapper {
+  display: flex;
+  /* border: green 1px dotted; */
+  justify-content: space-between;
+  margin: 1rem 0;
+  
+}
+
+.option {
+  display: flex;
+  flex-direction: column;
+  width: 48%;
+}
+
+.TOS {
+  height: 8rem;
+  border: 1px rgb(175, 175, 175) solid;
+  background-color: whitesmoke;
+  font-size: .8rem;
+  padding: .8rem;
+  overflow-y: scroll;
+  border-radius: .23rem;
+}
+
+.TOS-checkbox {
+  display: flex;
+  align-items: baseline;
+  margin: 1rem 0;
+}
+
+.TOS-checkbox input {
+  margin: .5rem;
+}
+
+
+.error-text {
+  color: deeppink;
+  font-size: .75rem;
+  margin: 0;
 }
